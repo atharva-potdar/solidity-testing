@@ -1,1 +1,1 @@
-pragma solidity ^0.8.30; // stating our Solidity version, ^ means version or greater
+pragma solidity >=0.8.30 <0.9; // stating our Solidity version, ^ means version or greater
