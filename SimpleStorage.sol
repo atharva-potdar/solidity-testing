@@ -11,7 +11,22 @@ contract SimpleStorage {
     // using uint defaults to uint256
     // int256 is just this but signed instead of unsigned
     // variable was internal by default, setting to public to see its value
-    uint256 public catAge = 3;
+    uint256 public aCatAge = 3;
+
+    // to create an array
+    // uint256[] public catAges; 
+
+    // custom datatype
+    struct Kitty {
+        uint256 catAge;
+        string name;
+    }
+
+    // variable with our custom datatype
+    Kitty public millie = Kitty({catAge: 3, name: "Millie"});
+
+    // dynamic array, to make it static, specify a size in []
+    Kitty[] public litter;
 
     // string catName = "Millie";
 
@@ -21,7 +36,7 @@ contract SimpleStorage {
     bytes32 catGamerTag = "xxMillieTheGreatxx";
 
     function kittyIsNow(uint256 _newCatAge) public {
-        catAge = _newCatAge;
+        aCatAge = _newCatAge;
     }
 
     // view - just read state from the blockchain, no modification allowed
@@ -33,7 +48,10 @@ contract SimpleStorage {
     function answerToLife() public pure returns (uint256) {
         return 42;
     }
-
     // calling a view/pure function only costs gas when a gas-cost transaction calls it
     // eg. calling answerToLife() in kittyIsNow() would incur a gas cost
+
+    function newKitty(string memory _name, uint256 _age) public {
+        litter.push(Kitty({catAge: _age, name: _name}));
+    }
 }
