@@ -28,6 +28,10 @@ contract SimpleStorage {
     // dynamic array, to make it static, specify a size in []
     Kitty[] public litter;
 
+    // dictionary data type
+    // if key not found, default value is 0 (or any "blank" value of the type)
+    mapping(string => uint256) public catNameToAge;
+
     // string catName = "Millie";
 
     // address donationAddress = 0x4D918c44815680e10A04fa5FE5D232F4C6e01Ab8;
@@ -59,5 +63,6 @@ contract SimpleStorage {
     //       whereas primitive types are auto-assigned a location, we can't specify
     function newKitty(string calldata _name, uint256 _age) public {
         litter.push(Kitty({catAge: _age, name: _name}));
+        catNameToAge[_name] = _age;
     }
 }
