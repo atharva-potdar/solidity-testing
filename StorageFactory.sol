@@ -15,4 +15,14 @@ contract StorageFactory {
         simpleStorages.push(new SimpleStorage());
     }
 
+    function simpleStorageKittyIsNow(uint256 simpleStorageID, uint256 _age) public {
+        simpleStorages[simpleStorageID].kittyIsNow(_age);
+    }
+
+    function simpleStorageAnswerToLife(uint256 simpleStorageID) public view returns(uint256) {
+        // Note: public variables can't be accessed directly
+        //       but solidity automatically creates a getter as follows - 
+        return simpleStorages[simpleStorageID].aCatAge();
+    }
+
 }
