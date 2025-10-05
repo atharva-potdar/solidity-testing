@@ -39,7 +39,8 @@ contract SimpleStorage {
     // strings are secretly just byte objects specifically for text!
     bytes32 catGamerTag = "xxMillieTheGreatxx";
 
-    function kittyIsNow(uint256 _newCatAge) public {
+    // functions that have to be overriden need to be "virtual" - virtual keyword
+    function kittyIsNow(uint256 _newCatAge) public virtual {
         aCatAge = _newCatAge;
     }
 
