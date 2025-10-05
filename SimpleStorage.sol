@@ -51,7 +51,13 @@ contract SimpleStorage {
     // calling a view/pure function only costs gas when a gas-cost transaction calls it
     // eg. calling answerToLife() in kittyIsNow() would incur a gas cost
 
-    function newKitty(string memory _name, uint256 _age) public {
+    // the EVM can read/write to calldata, memory, storage (and some more)
+    // calldata & memory - temporary, but with calldata, parameter cannot be modified
+    // storage - permanent variables - can be modified
+    // variables outside of functions are automatically storage variables
+    // NOTE: this only applies for arrays, structs, mappings
+    //       whereas primitive types are auto-assigned a location, we can't specify
+    function newKitty(string calldata _name, uint256 _age) public {
         litter.push(Kitty({catAge: _age, name: _name}));
     }
 }
